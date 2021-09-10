@@ -22,7 +22,11 @@ class _HomePageState extends State<HomePage> {
         .get(Uri.parse('https://rickandmortyapi.com/api/character?page=1'));
     //debugPrint(res.body);
 
-    setState(() {});
+    data = json.decode(res.body);
+
+    setState(() {
+      usersData = data['results'];
+    });
   }
 
   @override
@@ -32,6 +36,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Rick and Morty API'),
+        backgroundColor: Colors.indigo[900],
+      ),
+    );
   }
 }
