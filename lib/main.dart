@@ -68,6 +68,10 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
                         "${usersData[index]["name"]} ${usersData[index]["species"]}",
+                        style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black45),
                       ),
                     ),
                   )
