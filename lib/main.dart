@@ -10,6 +10,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List usersData = [];
+
+  getUsersRickAndMortyAPI() {
+    Map data;
+
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
