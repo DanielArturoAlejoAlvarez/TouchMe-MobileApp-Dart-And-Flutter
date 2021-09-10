@@ -61,6 +61,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                   CircleAvatar(
                     backgroundImage: NetworkImage(usersData[index]["image"]),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Text(
+                        "${usersData[index]["name"]} ${usersData[index]["species"]}",
+                      ),
+                    ),
                   )
                 ],
               ),
