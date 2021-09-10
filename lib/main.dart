@@ -47,8 +47,18 @@ class _HomePageState extends State<HomePage> {
         itemCount: usersData.length,
         itemBuilder: (BuildContext context, int index) {
           return Card(
-            child: Row(
-              children: <Widget>[],
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Text(
+                      "${usersData[index]["id"]}",
+                    ),
+                  )
+                ],
+              ),
             ),
           );
         },
