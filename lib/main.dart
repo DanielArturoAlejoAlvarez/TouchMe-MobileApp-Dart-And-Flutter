@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
 void main(List<String> args) {
   runApp(MaterialApp());
@@ -18,6 +20,7 @@ class _HomePageState extends State<HomePage> {
 
     http.Response res = await http
         .get(Uri.parse('https://rickandmortyapi.com/api/character?page=1'));
+    //debugPrint(res.body);
 
     setState(() {});
   }
