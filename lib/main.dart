@@ -58,6 +58,9 @@ class _HomePageState extends State<HomePage> {
                       style: TextStyle(
                           fontSize: 20.0, fontWeight: FontWeight.w500),
                     ),
+                  ),
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(usersData[index]["image"]),
                   )
                 ],
               ),
