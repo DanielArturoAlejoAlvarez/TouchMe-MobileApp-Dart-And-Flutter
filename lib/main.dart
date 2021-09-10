@@ -46,7 +46,11 @@ class _HomePageState extends State<HomePage> {
       body: ListView.builder(
         itemCount: usersData.length,
         itemBuilder: (BuildContext context, int index) {
-          return Card();
+          return Card(
+            child: Row(
+              children: <Widget>[],
+            ),
+          );
         },
       ),
     );
