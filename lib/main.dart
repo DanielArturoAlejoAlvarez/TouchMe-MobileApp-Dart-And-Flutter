@@ -4,7 +4,9 @@ import 'dart:async';
 import 'dart:convert';
 
 void main(List<String> args) {
-  runApp(MaterialApp());
+  runApp(MaterialApp(
+    home: HomePage(),
+  ));
 }
 
 class HomePage extends StatefulWidget {
@@ -40,6 +42,12 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Rick and Morty API'),
         backgroundColor: Colors.indigo[900],
+      ),
+      body: ListView.builder(
+        itemCount: usersData.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Card();
+        },
       ),
     );
   }
