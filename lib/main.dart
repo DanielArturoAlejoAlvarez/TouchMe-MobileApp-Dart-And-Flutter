@@ -3,6 +3,10 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
+int _pageNum = 1;
+int _totalItems = 0;
+List usersData = [];
+
 void main(List<String> args) {
   runApp(MaterialApp(
     home: HomePage(),
@@ -15,19 +19,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List usersData = [];
-  String uri = 'https://rickandmortyapi.com/api/character?page=1';
-
   getUsersRickAndMortyAPI() async {
-    Map data;
-
+    String uri = 'https://rickandmortyapi.com/api/character?page=$_pageNum';
     http.Response res = await http.get(Uri.parse(uri));
     //debugPrint(res.body);
+    Map data;
 
     data = json.decode(res.body);
+    //
+    usersData == []
+        ? usersData = data["results"]
+        : usersData.addAll(data["results"]);
 
     setState(() {
-      usersData = data['results'];
+      //usersData = data['results'];
+      _totalItems = usersData.length;
     });
   }
 
@@ -36,6 +42,19 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     getUsersRickAndMortyAPI();
   }
+
+  /*Widget createListView() {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: _totalItems,
+      itemBuilder: (BuildContext context, int index) {
+        if (index >= data["results"].length - 1) {
+          _pageNum++;
+          getUsersRickAndMortyAPI();
+        }
+      },
+    );
+  }*/
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +71,7 @@ class _HomePageState extends State<HomePage> {
               child: Padding(
                 padding: const EdgeInsets.all(25.0),
                 child: Text(
-                  "...To Live Is To Risk It All...",
+                  "($_pageNum)...To Live Is To Risk It All...",
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
@@ -68,8 +87,14 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: usersData.length,
+              shrinkWrap: true,
+              //scrollDirection: Axis.horizontal,
+              itemCount: _totalItems, //usersData.length,
               itemBuilder: (BuildContext context, int index) {
+                if (index >= usersData.length - 1) {
+                  _pageNum++;
+                  getUsersRickAndMortyAPI();
+                }
                 return Wrap(
                   children: [
                     Card(
