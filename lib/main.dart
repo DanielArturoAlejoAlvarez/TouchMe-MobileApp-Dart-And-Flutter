@@ -50,12 +50,18 @@ class _HomePageState extends State<HomePage> {
             child: Align(
               alignment: Alignment.topCenter,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(25.0),
                 child: Text(
-                  "At first glance, Rick and Morty looks like just another animated situational family comedy, like Family Guy or The Simpsons. Theoretically, that's true. When sociopathic scientist and estranged grandfather Rick returns to his daughter Beth’s life, he brings with him all sorts of family drama. Watching Beth's family of four navigate life with their self-centered, cynical, and narcissistic grandfather is, indeed, often very funny. In a sea of sad quotes on the internet, Rick and Morty quotes are the hilariously sardonic lines you need to buoy your dark heart.",
+                  "...To Live Is To Risk It All...",
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  softWrap: false,
                   style: TextStyle(
-                    fontSize: 20.0,
-                  ),
+                      backgroundColor: Colors.green[100],
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.black87),
                 ),
               ),
             ),
@@ -76,8 +82,9 @@ class _HomePageState extends State<HomePage> {
                               child: Text(
                                 "${usersData[index]["id"]}",
                                 style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w500),
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87),
                               ),
                             ),
                             CircleAvatar(
@@ -93,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                                   style: TextStyle(
                                       fontSize: 20.0,
                                       fontWeight: FontWeight.w900,
-                                      color: Colors.black45),
+                                      color: Colors.black87),
                                 ),
                               ),
                             )
